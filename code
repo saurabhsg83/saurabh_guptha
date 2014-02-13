@@ -1,0 +1,221 @@
+saurabh_guptha
+==============
+
+
+import java.net.*;
+import java.util.*;
+import java.io.*;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
+class ssssss1
+{  public static Queue<String> q=new LinkedList<String>();
+  public static Set<String> set=new HashSet<String>();
+ public static Set<String> stopWords = new LinkedHashSet<String>();
+  public void stopword()throws Exception
+{
+BufferedReader br = new BufferedReader(new FileReader("stopword.txt"));
+for(String line;(line = br.readLine()) != null;)
+   stopWords.add(line.trim());
+br.close();}
+public void Crawling(String urlg)throws Exception{
+try{
+ URL url=new URL(urlg);
+   Scanner in=new Scanner(new InputStreamReader(url.openStream()));
+   String str,w,key,str1,w1,key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,key99,str2,urlkey;
+ String regexp  = "<h1.*>(.*)</h1>";
+ String regexp1="<title>(.*)</title>";
+ String reg="<meta name=.*description.* content=.?(.*).{1}>";
+ String reg1="<meta name=.*description.* content=.?(.*)";
+ String reg2="(.*).{1}>";
+ String reg3="<p>(.*)</p>";
+ String reg4="<p>(.*)";
+ String reg5="(.*)</p>";
+ String  reg6="<a.*href.*=.*http://(.*?).{1}>";
+// String  reg7="<a.*>(.*)</a>";
+            Pattern pattern = Pattern.compile(regexp,Pattern.CASE_INSENSITIVE);
+            Pattern pattern1 = Pattern.compile(regexp1,Pattern.CASE_INSENSITIVE);
+            Pattern pattern2 = Pattern.compile(reg,Pattern.CASE_INSENSITIVE);
+           Pattern pattern3 = Pattern.compile(reg1,Pattern.CASE_INSENSITIVE);
+           Pattern pattern4 = Pattern.compile(reg2,Pattern.CASE_INSENSITIVE);
+           Pattern pattern5 = Pattern.compile(reg3,Pattern.CASE_INSENSITIVE);
+           Pattern pattern6 = Pattern.compile(reg4,Pattern.CASE_INSENSITIVE);
+           Pattern pattern7 = Pattern.compile(reg5,Pattern.CASE_INSENSITIVE);
+           Pattern pattern8 = Pattern.compile(reg6,Pattern.CASE_INSENSITIVE);
+           //Pattern pattern9 = Pattern.compile(reg7,Pattern.CASE_INSENSITIVE);
+
+StringTokenizer sto = new StringTokenizer(urlg,"./-%: ");
+
+            while(sto.hasMoreTokens()) 
+             { 
+               urlkey = sto.nextToken();
+         if(!stopWords.contains(urlkey))  
+           System.out.println(urlkey); 
+             }
+   while(in.hasNextLine())
+   { str=in.nextLine(); 
+            Matcher matcher = pattern.matcher(str);
+            Matcher matcher1 = pattern1.matcher(str);
+            Matcher matcher2 = pattern2.matcher(str);
+             Matcher matcher3 = pattern3.matcher(str);
+           Matcher matcher4 = pattern4.matcher(str);
+           Matcher matcher5 = pattern5.matcher(str);
+           Matcher matcher6 = pattern6.matcher(str);
+           Matcher matcher7 = pattern7.matcher(str);
+           Matcher matcher8 = pattern8.matcher(str);
+           // Matcher matcher9 = pattern9.matcher(str);
+            while (matcher.find()) {
+                 w = matcher.group(1);
+           StringTokenizer st = new StringTokenizer(w,". ");
+            while(st.hasMoreTokens()) 
+             { 
+               key = st.nextToken();
+         if(!stopWords.contains(key))  
+           System.out.println(key); 
+             }}
+
+           while (matcher1.find()) {
+                 w1 = matcher1.group(1);
+           StringTokenizer st1 = new StringTokenizer(w1,". ");
+            while(st1.hasMoreTokens()) 
+             { 
+               key1 = st1.nextToken();
+         if(!stopWords.contains(key1))  
+           System.out.println(key1); 
+             }      
+   }
+              
+          if(matcher2.find())
+          {  String w2 = matcher2.group(1);
+           StringTokenizer st2 = new StringTokenizer(w2," ");
+            while(st2.hasMoreTokens()) 
+             { 
+                key2 = st2.nextToken();
+           if(!stopWords.contains(key2))  
+           System.out.println(key2); 
+             }}
+        else if(matcher3.find())
+        { String w3 = matcher3.group(1);
+           StringTokenizer st3 = new StringTokenizer(w3," ");
+            while(st3.hasMoreTokens()) 
+             { 
+                key3 = st3.nextToken(); 
+           if(!stopWords.contains(key3)) 
+           System.out.println(key3); 
+             }
+          str1=in.nextLine();
+         matcher4 = pattern4.matcher(str1);
+         while(!matcher4.find())
+             {
+           StringTokenizer st4 = new StringTokenizer(str1," ");
+            while(st4.hasMoreTokens()) 
+             { 
+                key4 = st4.nextToken();
+          if(!stopWords.contains(key4))  
+           System.out.println(key4); 
+             }
+           str1=in.nextLine();
+            matcher4 = pattern4.matcher(str1);}
+                            
+          String w4 = matcher4.group(1);
+           StringTokenizer st4 = new StringTokenizer(w4," ");
+            while(st4.hasMoreTokens()) 
+             { 
+                key4 = st4.nextToken(); 
+          if(!stopWords.contains(key4)) 
+           System.out.println(key4); 
+             }
+}     
+            
+          if(matcher5.find())
+          {  String w5 = matcher5.group(1);
+           StringTokenizer st3 = new StringTokenizer(w5," ");
+            while(st3.hasMoreTokens()) 
+             { 
+                key5 = st3.nextToken();
+        if(!stopWords.contains(key5))  
+           System.out.println(key5); 
+             }}
+        else if(matcher6.find())
+        { String w6 = matcher6.group(1);
+           StringTokenizer st6 = new StringTokenizer(w6," ");
+            while(st6.hasMoreTokens()) 
+             { 
+                key6 = st6.nextToken();
+           if(!stopWords.contains(key6))  
+           System.out.println(key6); 
+             }
+          str2=in.nextLine();
+         matcher7 = pattern7.matcher(str2);
+         while(!matcher7.find())
+             {
+           StringTokenizer st8 = new StringTokenizer(str2," ");
+            while(st8.hasMoreTokens()) 
+             { 
+                key7 = st8.nextToken();
+           if(!stopWords.contains(key7))  
+           System.out.println(key7); 
+             }
+           str2=in.nextLine();
+            matcher7 = pattern7.matcher(str2);}
+                            
+          String w7 = matcher7.group(1);
+           StringTokenizer st5 = new StringTokenizer(w7," ");
+            while(st5.hasMoreTokens()) 
+             { 
+                key7 = st5.nextToken(); 
+          if(!stopWords.contains(key7)) 
+           System.out.println(key7); 
+             }
+}
+
+while (matcher8.find()) {
+                String w9 = matcher8.group(1);
+                if (!set.contains(w9)) 
+               {  
+                    q.add("http://"+w9);
+                    set.add("http://"+w9);
+               //System.out.println(q.remove());
+                }
+            }
+}
+
+in.close();}
+catch(Exception ex)
+{ex.printStackTrace();}
+
+
+}
+ 
+
+
+public static void main(String arg[])throws Exception
+{System.setProperty("sun.net.client.defaultConnectTimeout", "500");
+        System.setProperty("sun.net.client.defaultReadTimeout",    "1000");
+
+
+    
+
+
+System.out.println("ENTER THE URL");
+ Scanner inn=new Scanner(System.in);
+String url=inn.next();
+ 
+ q.add("file:///G:/semester%205/WEB%20TECH/HTML%20LAB/practice.htm");
+set.add("file:///G:/semester%205/WEB%20TECH/HTML%20LAB/practice.htm");
+ssssss1 obj=new ssssss1();
+obj.stopword();
+int i=1;
+while (i>=0) {
+if(!q.isEmpty())
+{String aa=q.remove();
+ System.out.println(aa);
+               
+obj.Crawling(aa);}
+i--;
+
+}
+
+}}  
+  
+   
+   
